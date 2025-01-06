@@ -12,24 +12,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
   root "products#index"
 
-  # Product
   resources :products do
     resources :subscribers, only: [ :create ] # i think this creates a 'nested route' w/ products on the outside, since subscribe makes sense only in the context of a product
   end
-  # get "/products", to: "products#index"
 
-  # get "/products/new", to: "products#new"
-  # post "/products", to: "products#create"
-  
-  # get "/products/:id", to: "products#show"
-  
-  # get "/products/:id/edit", to: "products#edit"
-  # patch "/products/:id", to: "products#update"
-  # put "/products/:id", to: "products#update"
-  
-  # delete "/products/:id", to: "products#destroy"    
+  resource :unsubscribe, only: [ :show ]
 
 end
