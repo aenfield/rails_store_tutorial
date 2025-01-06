@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   root "products#index"
 
   # Product
-  resources :products
+  resources :products do
+    resources :subscribers, only: [ :create ] # i think this creates a 'nested route' w/ products on the outside, since subscribe makes sense only in the context of a product
+  end
   # get "/products", to: "products#index"
 
   # get "/products/new", to: "products#new"
